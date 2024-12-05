@@ -39,21 +39,21 @@ function draw() {
 
   rotateX(frameCount * 0.01);   //programがstartしてからのフレーム数
   rotateY(frameCount * 0.01);
-  box(40);
+  box(50);
   
   translate(40, 40, -40);
   rotateX(millis() / 1000);    //programがstartしてからのミリ秒数
-  cylinder(20, 80, detailX.value(), 1);
+  cylinder(20,100, detailX.value(), 1);
   
   translate(-60,60,60);
-  cone(30, 80, detailX.value(), 16);
+  cone(40, 100, detailX.value(), 16);
   
   translate(80,-80,80);
   rotateY(millis() / 1000);
-  sphere(50, detailX.value(), 16);
+  sphere(60, detailX.value(), 16);
   
   translate(100, 100, 100);
-  torus(40, 20, detailX.value(), 12);
+  torus(60, 30, detailX.value(), 12);
 }
 </script>
 
