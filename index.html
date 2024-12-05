@@ -19,12 +19,41 @@
 <body>
 
 <script>
+//// p5.jsでWebGLを使う ////
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 400, WEBGL);
+  detailX = createSlider(3, 24, 3);    //スライダーの作成
+  detailX.position(10, height + 5);
+  detailX.style('width', '120px');
+  //debugMode();  //デバッグモード  
 }
 
 function draw() {
   background(220);
+  ambientLight("#0000ff");              //全方向の環境光は青色
+  directionalLight(255, 255, 0, 0, -1, 0);  //太陽光が下から
+  pointLight(255, 0, 0, -200, 0, 0);        //赤い点光源が左から
+  
+  //normalMaterial();
+  orbitControl();  //3D画面をぐりぐりできる
+
+  rotateX(frameCount * 0.01); //programがstartしてからのフレーム数
+  rotateY(frameCount * 0.01);
+  box(40);
+  
+  translate(40, 40, -40);
+  rotateX(millis() / 1000);  //programがstartしてからのミリ秒数
+  cylinder(20, 80, detailX.value(), 1);
+  
+  translate(-60,60,60);
+  cone(30, 80, detailX.value(), 16);
+  
+  translate(80,-80,80);
+  rotateY(millis() / 1000);
+  sphere(50, detailX.value(), 16);
+  
+  translate(100, 100, 100);
+  torus(40, 20, detailX.value(), 12);
 }
 </script>
 
